@@ -8,7 +8,7 @@ import { CHARACTERS, PROLOGUE, ERAS, TRUE_ENDING } from './data/gameData.js';
 import { GRAPH_NODES, GRAPH_EDGES } from './data/graphData.js';
 
 const GRAPH_LINKS = GRAPH_EDGES;
-const BACKGROUND_MUSIC_SRC = '/Music/Tchaikovsky - The Seasons - 10 - October - Autumn Song - Op. 37a  Royalty Free Classical Music.mp3';
+const BACKGROUND_MUSIC_SRC = `${import.meta.env.BASE_URL}Music/Tchaikovsky - The Seasons - 10 - October - Autumn Song - Op. 37a  Royalty Free Classical Music.mp3`;
 
 let backgroundMusic = null;
 let backgroundMusicInitialized = false;

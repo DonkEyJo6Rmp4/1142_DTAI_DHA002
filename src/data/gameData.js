@@ -8,44 +8,46 @@
  * Keys are used throughout the game to reference characters.
  * `image` paths are relative to the public directory.
  */
+const PUBLIC_ASSET_BASE = import.meta.env.BASE_URL;
+
 export const CHARACTERS = {
   anastasia: {
     name: 'Anastasia',
-    image: '/characters/1_Anastasia.png',
+    image: `${PUBLIC_ASSET_BASE}characters/1_Anastasia.png`,
     type: 'ghost',
   },
   maria: {
     name: 'Maria',
-    image: '/characters/2_Maria.png',
+    image: `${PUBLIC_ASSET_BASE}characters/2_Maria.png`,
     type: 'ghost',
   },
   ivan: {
     name: 'Ivan Petrov',
     title: 'Soviet Press Officer',
-    image: '/characters/3_IvanPetrov.png',
+    image: `${PUBLIC_ASSET_BASE}characters/3_IvanPetrov.png`,
     type: 'npc',
   },
   volkov: {
     name: 'Colonel Dmitri Volkov',
     title: 'White Russian Royalist Émigré',
-    image: '/characters/4_ColonelDmitriVolkov.png',
+    image: `${PUBLIC_ASSET_BASE}characters/4_ColonelDmitriVolkov.png`,
     type: 'npc',
   },
   chuck: {
     name: 'Chuck Morrison',
     title: 'Hollywood Film Producer',
-    image: '/characters/5_ChuckMorrison.png',
+    image: `${PUBLIC_ASSET_BASE}characters/5_ChuckMorrison.png`,
     type: 'npc',
   },
   kasimova: {
     name: 'Dr. Elena Kasimova',
     title: 'Forensic Geneticist',
-    image: '/characters/6_DrElenaKasimova.png',
+    image: `${PUBLIC_ASSET_BASE}characters/6_DrElenaKasimova.png`,
     type: 'npc',
   },
   family: {
     name: 'The Romanov Family',
-    image: '/characters/7_WholeFamily.png',
+    image: `${PUBLIC_ASSET_BASE}characters/7_WholeFamily.png`,
     type: 'ending',
   },
 };

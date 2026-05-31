@@ -377,7 +377,7 @@ a {
 }
 
 .game-screen .masthead-title {
-  font-size: clamp(2.45rem, 4.9vw, 4.85rem);
+  font-size: clamp(1.85rem, 4.25vw, 4.25rem);
 }
 
 .game-screen .masthead-subtitle {

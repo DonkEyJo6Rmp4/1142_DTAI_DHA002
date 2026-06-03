@@ -9,9 +9,22 @@ import { GRAPH_NODES, GRAPH_EDGES } from './data/graphData.js';
 
 const GRAPH_LINKS = GRAPH_EDGES;
 const BACKGROUND_MUSIC_SRC = `${import.meta.env.BASE_URL}Music/Tchaikovsky - The Seasons - 10 - October - Autumn Song - Op. 37a  Royalty Free Classical Music.mp3`;
+const KNOWLEDGE_GRAPH_PATH = `${import.meta.env.BASE_URL}KnowledgeGraph`;
 
 let backgroundMusic = null;
 let backgroundMusicInitialized = false;
+
+function isKnowledgeGraphRoute() {
+  const pathname = window.location.pathname.replace(/\/+$/, '');
+  const knowledgePath = KNOWLEDGE_GRAPH_PATH.replace(/\/+$/, '');
+  return pathname === knowledgePath;
+}
+
+function setRoute(path) {
+  if (window.location.pathname !== path) {
+    window.history.pushState({}, '', path);
+  }
+}
 
 function setupBackgroundMusic() {
   if (backgroundMusicInitialized) return;
@@ -35,7 +48,7 @@ function setupBackgroundMusic() {
 
 // ---- Application State ----
 let state = {
-  screen: 'prologue', // 'prologue' | 'era_transition' | 'era_intro' | 'game' | 'response' | 'ending' | 'graph'
+  screen: isKnowledgeGraphRoute() ? 'graph' : 'prologue', // 'prologue' | 'era_transition' | 'era_intro' | 'game' | 'response' | 'ending' | 'graph'
   eraIndex: 0,
   questionIndex: 0,
   
@@ -151,14 +164,13 @@ function renderPrologue() {
         ${PROLOGUE.narration.map((p, idx) => `<p style="animation-delay: ${idx * 0.4}s">${p}</p>`).join('')}
       </div>
       
-      <button class="continue-btn begin-btn" style="animation-delay: ${PROLOGUE.narration.length * 0.4}s; font-size: 1.1rem; padding: 1rem 3rem;">
-        ✦ BEGIN THE INVESTIGATION ✦
-      </button>
-      
-      <div style="margin-top: 30px; animation-delay: ${(PROLOGUE.narration.length + 1) * 0.4}s" class="fade-in">
-        <a href="#" class="graph-bypass-link" style="font-family: var(--font-ui); font-size: 0.75rem; color: var(--blood-red); text-decoration: underline; letter-spacing: 0.1em; text-transform: uppercase;">
-          Skip directly to Knowledge Graph
-        </a>
+      <div class="prologue-actions fade-in" style="animation-delay: ${PROLOGUE.narration.length * 0.4}s;">
+        <button class="continue-btn begin-btn prologue-action-btn">
+          ✦ BEGIN THE INVESTIGATION ✦
+        </button>
+        <button class="continue-btn begin-btn prologue-action-btn graph-bypass-link">
+          ✦ OPEN KNOWLEDGE GRAPH ✦
+        </button>
       </div>
     </div>
   `;
@@ -650,6 +662,7 @@ function setupPrologueListeners() {
     btn.addEventListener('click', () => {
       state.screen = 'era_transition';
       state.eraIndex = 0;
+      setRoute(import.meta.env.BASE_URL);
       render();
     });
   }
@@ -660,6 +673,7 @@ function setupPrologueListeners() {
       e.preventDefault();
       state.screen = 'graph';
       state.selectedNodeId = null;
+      setRoute(KNOWLEDGE_GRAPH_PATH);
       render();
     });
   }
@@ -774,6 +788,7 @@ function setupEndingListeners() {
     exploreBtn.addEventListener('click', () => {
       state.screen = 'graph';
       state.selectedNodeId = null;
+      setRoute(KNOWLEDGE_GRAPH_PATH);
       render();
     });
   }
@@ -785,6 +800,7 @@ function setupEndingListeners() {
       state.eraIndex = 0;
       state.questionIndex = 0;
       state.wrongChoices.clear();
+      setRoute(import.meta.env.BASE_URL);
       render();
     });
   }
@@ -796,6 +812,7 @@ function setupGraphListeners() {
   if (backBtn) {
     backBtn.addEventListener('click', () => {
       state.screen = 'prologue';
+      setRoute(import.meta.env.BASE_URL);
       render();
     });
   }

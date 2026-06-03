@@ -314,6 +314,22 @@ a {
     var(--blood-red);
 }
 
+.prologue-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: 18px;
+  width: min(100%, 980px);
+  margin-top: 1.8rem;
+}
+
+.prologue-action-btn {
+  width: 100%;
+  min-height: 62px;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
 .graph-bypass-link,
 .fade-in {
   animation: fadeIn 0.7s both;
@@ -966,6 +982,11 @@ a {
     width: calc(100% - 24px);
   }
 
+  .prologue-actions {
+    grid-template-columns: 1fr;
+    width: min(100%, 480px);
+  }
+
   .ghost-panel,
   .npc-panel {
     min-height: auto;
@@ -991,6 +1012,11 @@ a {
 @media (max-width: 560px) {
   .prologue-narration {
     column-count: 1;
+  }
+
+  .prologue-actions {
+    grid-template-columns: 1fr;
+    width: min(100%, 360px);
   }
 
   .ghost-characters {

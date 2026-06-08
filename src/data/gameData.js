@@ -53,8 +53,8 @@ export const CHARACTERS = {
   },
   family: {
     name: 'The Romanov Family',
-    image: `${PUBLIC_ASSET_BASE}characters/optimized/7_WholeFamily.webp`,
-    fallbackImage: `${PUBLIC_ASSET_BASE}characters/7_WholeFamily.png`,
+    image: `${PUBLIC_ASSET_BASE}characters/optimized/7_WholeFamily_ending.webp`,
+    fallbackImage: `${PUBLIC_ASSET_BASE}characters/7_WholeFamily_ending.png`,
     type: 'ending',
   },
 };

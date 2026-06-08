@@ -33,7 +33,7 @@ function setupBackgroundMusic() {
   backgroundMusic = new Audio(BACKGROUND_MUSIC_SRC);
   backgroundMusic.loop = true;
   backgroundMusic.volume = 0.28;
-  backgroundMusic.preload = 'auto';
+  backgroundMusic.preload = 'metadata';
 
   const playMusic = () => {
     backgroundMusic.play().catch(() => {
@@ -110,6 +110,11 @@ function getNpcWaitingLine(npcKey) {
   };
 
   return waitingLines[npcKey] || '*(The witness waits, measuring the room before speaking.)*';
+}
+
+function renderCharacterImage(character, className, style, alt) {
+  const fallback = character.fallbackImage || character.image;
+  return `<img src="${character.image}" class="${className}" style="${style}" alt="${alt}" decoding="async" onerror="this.onerror=null; this.src='${fallback}'" />`;
 }
 
 // ---- Main Render Function ----
@@ -235,11 +240,11 @@ function renderEraIntro() {
         <div class="ghost-panel">
           <div class="ghost-characters" style="display: flex; flex-direction: row; justify-content: center; gap: 20px; width: 100%;">
             <div class="character-img-wrapper" style="opacity: ${ghostOpacityAna}; transition: opacity 0.3s; width: 120px;">
-              <img src="${CHARACTERS.anastasia.image}" class="character-img ghost-img" style="height: 180px; width: 100%; object-fit: cover;" alt="Anastasia" />
+              ${renderCharacterImage(CHARACTERS.anastasia, 'character-img ghost-img', 'height: 180px; width: 100%; object-fit: cover;', 'Anastasia')}
               <div class="character-label">Anastasia</div>
             </div>
             <div class="character-img-wrapper" style="opacity: ${ghostOpacityMar}; transition: opacity 0.3s; width: 120px;">
-              <img src="${CHARACTERS.maria.image}" class="character-img ghost-img" style="height: 180px; width: 100%; object-fit: cover;" alt="Maria" />
+              ${renderCharacterImage(CHARACTERS.maria, 'character-img ghost-img', 'height: 180px; width: 100%; object-fit: cover;', 'Maria')}
               <div class="character-label">Maria</div>
             </div>
           </div>
@@ -254,7 +259,7 @@ function renderEraIntro() {
         <!-- NPC Panel (Right — 60%) -->
         <div class="npc-panel">
           <div class="character-img-wrapper" style="opacity: ${npcOpacity}; transition: opacity 0.3s; margin: 0 auto; width: 130px;">
-            <img src="${npc.image}" class="character-img npc-img" style="height: 185px; width: 100%; object-fit: cover;" alt="${npc.name}" />
+            ${renderCharacterImage(npc, 'character-img npc-img', 'height: 185px; width: 100%; object-fit: cover;', npc.name)}
             <div class="character-label">${npc.name}</div>
           </div>
           
@@ -310,11 +315,11 @@ function renderGame() {
         <div class="ghost-panel">
           <div class="ghost-characters" style="display: flex; flex-direction: row; justify-content: center; gap: 20px; width: 100%;">
             <div class="character-img-wrapper" style="opacity: 0.8; width: 120px;">
-              <img src="${CHARACTERS.anastasia.image}" class="character-img ghost-img" style="height: 180px; width: 100%; object-fit: cover;" alt="Anastasia" />
+              ${renderCharacterImage(CHARACTERS.anastasia, 'character-img ghost-img', 'height: 180px; width: 100%; object-fit: cover;', 'Anastasia')}
               <div class="character-label">Anastasia</div>
             </div>
             <div class="character-img-wrapper" style="opacity: 0.8; width: 120px;">
-              <img src="${CHARACTERS.maria.image}" class="character-img ghost-img" style="height: 180px; width: 100%; object-fit: cover;" alt="Maria" />
+              ${renderCharacterImage(CHARACTERS.maria, 'character-img ghost-img', 'height: 180px; width: 100%; object-fit: cover;', 'Maria')}
               <div class="character-label">Maria</div>
             </div>
           </div>
@@ -329,7 +334,7 @@ function renderGame() {
         <!-- NPC Panel (Right — 60%) -->
         <div class="npc-panel">
           <div class="character-img-wrapper" style="margin: 0 auto; width: 130px;">
-            <img src="${npc.image}" class="character-img npc-img" style="height: 185px; width: 100%; object-fit: cover;" alt="${npc.name}" />
+            ${renderCharacterImage(npc, 'character-img npc-img', 'height: 185px; width: 100%; object-fit: cover;', npc.name)}
             <div class="character-label">${npc.name}</div>
           </div>
           
@@ -421,7 +426,7 @@ function renderEnding() {
   return `
     <div class="true-ending">
       <div class="family-silhouette">
-        <img src="${CHARACTERS.family.image}" class="character-img" style="max-height: 380px; object-fit: contain;" alt="Imperial Family silhouette" />
+        ${renderCharacterImage(CHARACTERS.family, 'character-img', 'max-height: 380px; object-fit: contain;', 'Imperial Family silhouette')}
       </div>
       
       <div class="true-ending-section">

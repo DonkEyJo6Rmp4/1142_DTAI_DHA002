@@ -35,6 +35,56 @@ GitHub repository:
 https://github.com/DonkEyJo6Rmp4/1142_DTAI_DHA002
 ```
 
+## Assets Folder for Review
+
+All supporting submission materials can be found in the `assets/` folder.
+
+This folder is included so that the instructor and reviewers can quickly find the presentation, poster, music, character images, and source archive without searching through the development files.
+
+```text
+assets/
+```
+
+The folder contains:
+
+```text
+assets/presentation/
+```
+
+Presentation file for the final project.
+
+```text
+assets/poster/
+```
+
+A1 poster image for the final exhibition submission.
+
+The GitHub-friendly poster file is:
+
+```text
+assets/poster/1142_DHAI_InnoFest_Poster.jpg
+```
+
+The original high-resolution PNG poster may be kept locally because it is larger than GitHub's normal single-file upload limit.
+
+```text
+assets/Music/
+```
+
+Background music used in the website.
+
+```text
+assets/characterPic/
+```
+
+Original character images used for the RPG website.
+
+```text
+assets/paper/
+```
+
+The 53 research source files used to build the Romanov archive and Knowledge Graph.
+
 ## Research Topic
 
 The project studies how the Romanov survival myth was created and sustained after the execution of the Romanov family in 1918.
@@ -319,6 +369,12 @@ The complete final project includes:
 - Project report
 - Code review document
 - GitHub Pages public deployment
+
+The files for the poster, presentation, music, images, and paper archive are collected in:
+
+```text
+assets/
+```
 
 ## Summary
 
